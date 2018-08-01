@@ -1,0 +1,119 @@
+===================================================
+vagrant开发环境命令
+vagrant up
+vagrant reload --provision
+vagrant ssh
+mysql -u homestead -p  (password is: secret)
+
+===================================================
+which npm
+npm root
+npm root -g
+
+nvm ls
+nvm alias default v10.6.0   设置默认 node 版本
+nvm use 10.6.0              使用什么node版本
+nvm which 10.6.0            node路径在哪里
+nvm install node            安装最新版 Node
+nvm install iojs            安装最新版 iojs
+nvm install unstable        安装最新不稳定版本的 Node
+
+===================================================
+exp build:android
+
+
+===================================================
+composer create-project --prefer-dist laravel/laravel blog
+php artisan serve
+php artisan key:generate
+laravel new php-jack
+php artisan key:generate
+php artisan make:controller Hello
+php artisan make:model Category
+php artisan make:model Product --migration
+
+php artisan make:view hello
+php artisan make:controller PostController --resource
+
+php artisan config:clear
+php artisan config:cache
+php artisan cache:clear
+
+
+php artisan migrate:install
+php artisan migrate:make create_admin_table
+php artisan migrate:make create_docs_table
+php artisan migrate
+php artisan migrate:fresh
+php artisan migrate:rollback
+
+php artisan migrate:make seed_authors_table
+
+php artisan make:middleware CheckName
+
+
+===================================================
+代码生成器扩展包
+composer require laracasts/generators --dev
+
+创建表
+php artisan make:migration:schema create_users_table --schema="username:string, email:string:unique"
+php artisan make:migration:schema create_posts_table --schema="title:string, content:text"
+添加一列
+php artisan make:migration:schema add_user_id_from_posts_table --schema="user_id:integer"
+删除一列
+php artisan make:migration:schema remove_user_id_from_posts_table --schema="user_id:integer"
+生成实体类
+php artisan make:model Post --no-migration
+
+// 重置数据库，包括重建表，和重新插入测试数据（如果有）
+php artisan migrate:refresh --seed
+
+// 更新修改到数据库
+php artisan migrate
+
+// 生成填充类
+php artisan make:seeder PostsTableSeeder
+// DatabaseSeeder修改
+$this->call(PostsTableSeeder::class);
+// 填充数据到数据库
+php artisan db:seed
+// 不知道哪里会用到
+composer dump-autoload
+
+
+// todo: 连接查询
+php artisan make:migration:pivot
+
+===================================================
+git 使用
+git init
+git add .
+git commit -m "First Commit"
+git remote add origin "git@github.com:jaguaryang/comp710-horse.git"
+git remote -v
+git push origin master
+
+git status
+git add hello-world.php
+git add -A .
+git commit -m "Need to write something"
+git push origin master
+
+
+===================================================
+更新php7
+sudo add-apt-repository ppa:ondrej/php -y
+sudo apt-get update -y
+sudo apt-get install php7.1-curl php7.1-cli php7.1-dev php7.1-gd php7.1-intl php7.1-mcrypt php7.1-json php7.1-mysql php7.1-opcache php7.1-bcmath php7.1-mbstring php7.1-soap php7.1-xml php7.1-zip -y
+sudo mv /etc/apache2/envvars /etc/apache2/envvars.bak
+sudo apt-get remove libapache2-mod-php5 -y
+sudo apt-get install libapache2-mod-php7.1 -y
+sudo cp /etc/apache2/envvars.bak /etc/apache2/envvars
+
+sudo a2dismod php5
+sudo a2dismod php5.6
+sudo a2enmod php7.2
+sudo service apache2 restart
+
+
